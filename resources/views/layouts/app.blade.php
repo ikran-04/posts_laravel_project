@@ -9,18 +9,31 @@
 <body class="bg-gray-200">
     <nav class="bg-white flex justify-between items-center p-6 mb-6">
         <ul class="flex items-center space-x-5">
-            <li>Home</li>
-            <li>Dashboard</li>
+            <li>
+                <a href="/">Home</a></li>
+            <li>
+                <a href="{{route('dashboard')}}">Dashboard</a></li>
             <li>Posts</li>
         </ul>
 
         <ul class="flex items-center space-x-5">
-            <li>Ikran hashi</li>
-            <li>Login</li>
-            <li >
-                <a href="{{route('register')}}">Register</a>
-            </li>
-            <li>Logout</li>
+
+            @auth
+            <li><a href="">{{auth()->user()->name}}</a></li>
+            <li>
+                <form action="{{route('logout')}}" method="post">
+                @csrf
+                        <button type="submit">Logout</button></li>
+                </form>
+            @endauth
+
+            @guest    
+                <li>
+                    <a href="{{route('login')}}">Login</a></li>
+                <li >
+                    <a href="{{route('register')}}">Register</a>
+                </li>
+            @endguest
         </ul>
     </nav>
     @yield('content')
