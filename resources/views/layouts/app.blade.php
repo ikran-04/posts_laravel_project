@@ -13,7 +13,7 @@
                 <a href="/">Home</a></li>
             <li>
                 <a href="{{route('dashboard')}}">Dashboard</a></li>
-            <li>Posts</li>
+            <li> <a href="{{route('posts')}}">Posts</a></li>
         </ul>
 
         <ul class="flex items-center space-x-5">
